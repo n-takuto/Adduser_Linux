@@ -1,0 +1,28 @@
+---
+- hosts: testserver
+  gather_facts: false
+  become: true
+  vars:
+    - uname: testuser01
+    - uid: 2001
+    - group: testgroup
+    - home: /home/testdir
+    - shell: /bin/bash
+    - password: "{{ 'initbc' | password_hash('sha512') }}"
+    - system: yes
+    - update_password: on_create
+
+  tasks:
+  #ユーザを作成
+  - name: Add user
+    user:
+      state: present
+      name: "{{ uname }}"
+      uid: "{{ uid }}"
+      group: "{{ group }}"
+      home: "{{ home }}"
+      shell: "{{ shell }}"
+      password: "{{ password }}"
+      system: "{{ system }}"
+      update_password: "{{ update_password }}"
+
