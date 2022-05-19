@@ -3,8 +3,8 @@
   gather_facts: false
   become: true
   vars:
-    - uname: testuser01
-    - uid: 2001
+#    - uname: testuser01
+#    - uid: 2001
     - group: testgroup
     - home: /home/testdir
     - shell: /bin/bash
